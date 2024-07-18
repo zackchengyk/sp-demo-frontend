@@ -1,11 +1,12 @@
 import './App.css';
+import Callback from './callback';
 
 function App() {
   const authurl = 'https://stg-id.singpass.gov.sg/auth?';
   const scope = 'openid';
   const response_type = 'code';
-  const client_id = 'tLRDBkf1CNy5Rsi34mEKuOD5EpQAwjIq';
-  const redirect_uri = 'https://singpassdemoapp.netlify.app/callback';
+  const client_id = 'dRqW0Zz2DzC7ibKG3vtV9t1T9UpJfkeT';
+  const redirect_uri = 'https://thisiszack.com/sp-demo-frontend';
   const nonce = crypto.randomUUID();
   const state = crypto.randomUUID();
   const url =
@@ -73,6 +74,8 @@ function App() {
           </div>
         </div>
       </div>
+      <hr />
+      <Callback />
     </div>
   );
 }
