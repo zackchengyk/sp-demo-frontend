@@ -7,7 +7,7 @@ function Callback() {
   const [UUID, setUUID] = useState('');
   useEffect(() => {
     const getIDToken = async () => {
-      const url = `https://lively-melomakarona-f8f6d3.netlify.app/.netlify/functions/api?code=${code}`;
+      const url = `https://lively-melomakarona-f8f6d3.netlify.app/.netlify/functions/api1?code=${code}`;
       const { data } = await axios.get(url);
       setNRIC(data.data);
       setUUID(data.UUID);
