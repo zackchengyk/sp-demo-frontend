@@ -1,18 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Callback from './callback';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import App2 from './App2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/sp-demo-frontend">
-      <Routes>
-        <Route path="/" element={<App />}></Route>
-        <Route path="/callback" element={<Callback />} />
-      </Routes>
-    </BrowserRouter>
+    <App2 />
   </React.StrictMode>
 );
