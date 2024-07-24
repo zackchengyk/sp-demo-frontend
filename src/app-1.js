@@ -40,7 +40,7 @@ export function App1() {
   }, [code]);
 
   return (
-    <div id="app-1">
+    <section id="app-1">
       <h2>App 1: Login Flow</h2>
 
       <pre>
@@ -61,19 +61,20 @@ export function App1() {
       <pre>
         <strong>{`2. the RP's FE should send the returned code to the RP's BE:`}</strong>
       </pre>
+      <pre>{`- the code taken from your current search params is: `}</pre>
       <pre>
-        {`- the code taken from your current search params is: `}
+        {`  `}
         {code ?? <em>undefined</em>}
       </pre>
-      <pre>{`- I am sending this to my Netlify function to do the next step.`}</pre>
 
       <hr />
 
       <pre>
         <strong>{`3. the RP's BE should POST to the LOGIN /token endpoint:`}</strong>
       </pre>
+      <pre>{`- this will only work once!`}</pre>
       <pre>{`- here is the data returned from the /token endpoint to the BE:`}</pre>
       <pre>{JSON.stringify(returnedData, null, '\t')}</pre>
-    </div>
+    </section>
   );
 }

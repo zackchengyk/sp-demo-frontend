@@ -24,6 +24,9 @@ export function App2() {
   const [code_challenge, setCC] = useState('');
   const [code_verifier, setCV] = useState('');
 
+  const code =
+    new URLSearchParams(window.location.search).get('code') ?? undefined;
+
   useEffect(() => {
     const url = `https://lively-melomakarona-f8f6d3.netlify.app/.netlify/functions/api2-code-challenge`;
     axios.get(url).then((res) => {
@@ -33,7 +36,7 @@ export function App2() {
   }, []);
 
   return (
-    <div id="app-2">
+    <section id="app-2">
       <h2>App 2: MyInfo Flow</h2>
 
       <pre>
@@ -61,24 +64,29 @@ export function App2() {
       <pre>
         <strong>{`3. the RP's FE should send the returned code to the RP's BE:`}</strong>
       </pre>
-
-      <hr />
-
+      <pre>{`- the code taken from your current search params is: `}</pre>
       <pre>
-        <strong>{`4. the RP's BE should generate an ephemeral keypair:`}</strong>
+        {`  `}
+        {code ?? <em>undefined</em>}
       </pre>
 
       <hr />
 
       <pre>
-        <strong>{`5. the RP's BE should POST to the MYINFO /token endpoint:`}</strong>
+        <strong>{`4. the RP's BE should generate an ephemeral keypair`}</strong>
       </pre>
 
       <hr />
 
       <pre>
-        <strong>{`6. the RP's BE should GET from the MYINFO /person endpoint:`}</strong>
+        <strong>{`5. the RP's BE should POST to the MYINFO /token endpoint`}</strong>
       </pre>
-    </div>
+
+      <hr />
+
+      <pre>
+        <strong>{`6. the RP's BE should GET from the MYINFO /person endpoint`}</strong>
+      </pre>
+    </section>
   );
 }

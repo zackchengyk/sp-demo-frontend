@@ -1,16 +1,18 @@
 body {
   font-family: monospace;
+  height: 100dvh;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
 }
 
 main {
   display: grid;
-  grid-template: 'a b' 1fr / 1fr 1fr;
-  gap: 4rem;
-  padding: 2rem 4rem;
+  grid-template: 'a b' 1fr / minmax(0, 1fr) minmax(0, 1fr);
+
+  height: 100dvh;
 }
 
 h2 {
@@ -26,13 +28,27 @@ hr {
   margin: 1.5rem 0;
 }
 
-#app-1,
-#app-2 {
+section {
+  padding: 2rem;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
   gap: 0.5rem;
+
+  overflow: scroll;
+
+  > hr {
+    align-self: flex-start;
+  }
+}
+
+#app-1 {
+  padding-left: 4rem;
+}
+
+#app-2 {
+  padding-right: 4rem;
 }
 
 a {
@@ -44,4 +60,13 @@ a {
 
   color: black;
   background-color: #0002;
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
 }
