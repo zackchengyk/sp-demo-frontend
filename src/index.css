@@ -51,15 +51,21 @@ section {
   padding-right: 4rem;
 }
 
-a {
-  margin-top: 0.75rem;
-  padding: 0.25rem 0.5rem;
+.text-wrap {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
 
-  border-radius: 0.25rem;
-  border: 1px solid black;
+button:disabled {
+  cursor: not-allowed;
+}
 
-  color: black;
-  background-color: #0002;
+button:not(:disabled) {
+  cursor: pointer;
 }
 
 details > summary {

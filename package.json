@@ -2,6 +2,7 @@
   "name": "sp-demo-frontend",
   "version": "0.0.0",
   "private": true,
+  "homepage": "/sp-demo-frontend/",
   "dependencies": {
     "axios": "^1.7.2",
     "jose": "^5.6.3",
@@ -12,7 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build && rm -rf ./docs && touch ./build/.nojekyll && mv ./build ./docs"
   },
   "browserslist": {
     "production": [

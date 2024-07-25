@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
+import { ClearButton } from './clear-button';
+import { LoadingButton } from './loading-button';
+import { Undef } from './shared';
 
 const client_id = 'dRqW0Zz2DzC7ibKG3vtV9t1T9UpJfkeT';
 const scope = 'openid';
@@ -25,26 +28,41 @@ export function App1() {
   const code =
     new URLSearchParams(window.location.search).get('code') ?? undefined;
 
-  const [returnedData, setReturnedData] = useState({});
+  const [returnedData, setReturnedData] = useState(
+    localStorage.getItem('app1-data')
+  );
 
-  useEffect(() => {
-    if (code === undefined) {
-      setReturnedData({});
-      return;
-    }
+  const accessAuthorizePage = () => {
+    window.location = authUrl(state, nonce);
+  };
+
+  const getToken = async () => {
     const url = `https://lively-melomakarona-f8f6d3.netlify.app/.netlify/functions/api1?code=${code}`;
-    axios
+    await axios
       .get(url)
-      .then(({ data }) => setReturnedData(data))
-      .catch((err) => setReturnedData(err));
-  }, [code]);
+      .then(({ data }) => {
+        setReturnedData(data);
+        localStorage.setItem('app-1-data', data);
+      })
+      .catch((err) => {
+        setReturnedData(err);
+        localStorage.removeItem('app-1-data');
+      });
+  };
 
   return (
     <section id="app-1">
-      <h2>App 1: Login Flow</h2>
+      <h2>App 1: Old Auth Flow</h2>
+
+      <ClearButton />
+      <hr />
 
       <pre>
-        <strong>{`1. the RP's FE should redirect to the LOGIN /auth endpoint, with params:`}</strong>
+        <strong>
+          {
+            "1. the RP's FE should redirect to the LOGIN /auth endpoint, with params:"
+          }
+        </strong>
       </pre>
       <pre>{`- client_id:     ${client_id}`}</pre>
       <pre>{`- scope:         ${scope}`}</pre>
@@ -52,29 +70,40 @@ export function App1() {
       <pre>{`- response_type: code`}</pre>
       <pre>{`- state:         ${state}`}</pre>
       <pre>{`- nonce:         ${nonce}`}</pre>
-      <a
-        href={authUrl(state, nonce)}
-      >{`https://stg-id.singpass.gov.sg/auth?...`}</a>
+      <button onClick={accessAuthorizePage}>
+        {'Link to https://stg-id.singpass.gov.sg/auth?...'}
+      </button>
 
       <hr />
 
       <pre>
-        <strong>{`2. the RP's FE should send the returned code to the RP's BE:`}</strong>
+        <strong>
+          {"2. the RP's FE should send the returned code to the RP's BE:"}
+        </strong>
       </pre>
-      <pre>{`- the code taken from your current search params is: `}</pre>
+      <pre>{'- the code taken from your current search params is: '}</pre>
       <pre>
-        {`  `}
-        {code ?? <em>undefined</em>}
+        {'  '}
+        {code ?? <Undef />}
       </pre>
 
       <hr />
 
       <pre>
-        <strong>{`3. the RP's BE should POST to the LOGIN /token endpoint:`}</strong>
+        <strong>
+          {"3. the RP's BE should POST to the LOGIN /token endpoint:"}
+        </strong>
       </pre>
-      <pre>{`- this will only work once!`}</pre>
-      <pre>{`- here is the data returned from the /token endpoint to the BE:`}</pre>
-      <pre>{JSON.stringify(returnedData, null, '\t')}</pre>
+      <LoadingButton clickHandler={getToken}>
+        {'Trigger to get token'}
+      </LoadingButton>
+      <pre>{'- this will only work once!'}</pre>
+      <pre>
+        {'- here is the data returned from the /token endpoint to the BE:'}
+      </pre>
+      <pre>
+        {returnedData ? JSON.stringify(returnedData, null, '\t') : <Undef />}
+      </pre>
     </section>
   );
 }
