@@ -4,7 +4,7 @@ import { ClearButton } from './clear-button';
 import { LoadingButton } from './loading-button';
 import { Undef } from './shared';
 
-const client_id = '5LiGOm4HCswguYkPPjfkUIhVn4vBOi0J';
+const client_id = 'UBICZWzuxm4jRfNBz8jf7hKFrfJ39E33';
 const scope = 'openid';
 const redirect_uri = 'https://thisiszack.com/sp-demo-frontend';
 
@@ -26,7 +26,6 @@ export function App3() {
   const [cv, setCV] = useState(localStorage.getItem('app3-cv'));
   const [cc, setCC] = useState(localStorage.getItem('app3-cc'));
 
-  const [gettingToken, setGettingToken] = useState(false);
   const [returnedData, setReturnedData] = useState(
     localStorage.getItem('app3-data')
   );
