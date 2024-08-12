@@ -4,7 +4,7 @@ import { ClearButton } from './clear-button';
 import { LoadingButton } from './loading-button';
 import { Undef } from './shared';
 
-const client_id = 'UBICZWzuxm4jRfNBz8jf7hKFrfJ39E33';
+const client_id = 'Qt3SgUGdM7oweEHi2POJcBreuzzQ3JSU';
 const scope = 'openid';
 const redirect_uri = 'https://thisiszack.com/sp-demo-frontend';
 
