@@ -4,12 +4,12 @@ import { ClearButton } from './clear-button';
 import { LoadingButton } from './loading-button';
 import { Undef } from './shared';
 
-const client_id = 'iJ7S1EdI06K4e5o8hjlLE95NAbMMJsVk';
+const client_id = 'kmMS5hcac9j5WygfaXDcXJBvYoS5RXZA';
 const scope = 'openid';
 const redirect_uri = 'https://thisiszack.com/sp-demo-frontend';
 
 const authUrl = (state, nonce, code_challenge) =>
-  `https://api.stg-auth.singpass.gov.sg/auth?` +
+  `https://api.dev-auth.singpass.gov.sg/auth?` +
   `response_type=code` +
   `&client_id=${client_id}` +
   `&redirect_uri=${redirect_uri}` +
@@ -123,7 +123,7 @@ export function App3() {
       </pre>
       <pre>{`- code_challenge_method: S256`}</pre>
       <button onClick={accessAuthorizePage}>
-        {'Link to https://api.stg-auth.singpass.gov.sg/auth?...'}
+        {'Link to https://api.dev-auth.singpass.gov.sg/auth?...'}
       </button>
 
       <hr />
