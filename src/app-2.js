@@ -10,7 +10,7 @@ const purposeId = '42e23206';
 const redirectUri = 'https://thisiszack.com/sp-demo-frontend';
 
 const authUrl = (codeChallenge) =>
-  'https://sit.api.myinfo.gov.sg/com/v4/authorize?client_id=' +
+  'https://test.api.myinfo.gov.sg/com/v4/authorize?client_id=' +
   clientId +
   '&scope=' +
   scope +
@@ -145,7 +145,7 @@ export function App2() {
       </pre>
       <pre>{`- purposeId:      ${purposeId}`}</pre>
       <button onClick={accessAuthorizePage}>
-        {'Link to https://sit.api.myinfo.gov.sg/com/v4/authorize?...'}
+        {'Link to https://test.api.myinfo.gov.sg/com/v4/authorize?...'}
       </button>
 
       <hr />
