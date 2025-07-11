@@ -185,7 +185,7 @@ export function App2() {
       <pre>{'  - the code_verifier way above,'}</pre>
       <pre>{'  - the public and private key directly above, and'}</pre>
       <pre>{'  - the authorization code from your search params'}</pre>
-      <LoadingButton clickHandler={getToken}>
+      <LoadingButton clickHandler={getAccessToken}>
         {'Trigger to get access token'}
       </LoadingButton>
       <pre>{`access token:`}</pre>
@@ -201,7 +201,7 @@ export function App2() {
       <pre>{'- this uses:  '}</pre>
       <pre>{'  - the access token directly above, and'}</pre>
       <pre>{'  - the public and private key above'}</pre>
-      <LoadingButton clickHandler={getToken}>
+      <LoadingButton clickHandler={getAccessToken}>
         {'Trigger to get person info'}
       </LoadingButton>
       <pre>{`person info:`}</pre>

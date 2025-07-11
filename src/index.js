@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { App1 } from './app-1';
+import { App2 } from './app-2';
 import { App3 } from './app-3';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,7 +19,7 @@ function Main() {
 
   return (
     <main>
-      <App1 />
+      <App2 />
       <App3 />
     </main>
   );
