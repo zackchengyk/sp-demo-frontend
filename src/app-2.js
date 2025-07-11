@@ -201,7 +201,7 @@ export function App2() {
       <pre>{'- this uses:  '}</pre>
       <pre>{'  - the access token directly above, and'}</pre>
       <pre>{'  - the public and private key above'}</pre>
-      <LoadingButton clickHandler={getAccessToken}>
+      <LoadingButton clickHandler={getPersonInfo}>
         {'Trigger to get person info'}
       </LoadingButton>
       <pre>{`person info:`}</pre>
